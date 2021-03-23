@@ -2,6 +2,8 @@
 
 Voici les etapes si vous desirez tester le projet sur votre machine, des images sont également incluses.
 
+- [Se rendre sur la page de la branche principale](https://github.com/007nicky/ProjetGarderie)
+
 - [Telecharger le projet zipé ci-haut / Vous pouvez également le clonez. Une fois téléchargé, dézipé le projet ou vous voulez, mais vous aurez besoin d'y acceder plus tard par la ligne de commande cmd](https://raw.githubusercontent.com/007nicky/007nicky.github.io/main/Steps/1.jpg)
 - Telecharger la version zipé de [php](https://windows.php.net/download#php-8.0),(Vous pouvez egalement choisir une autre version, j'ai pris celle [zipé](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/2.jpg))
 - Telecharger [Composer](https://getcomposer.org/download/), un gestionnaire de dépendances pour PHP. [Image](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/3.jpg)
