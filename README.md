@@ -15,12 +15,15 @@ Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai
 2. Apres le telechargement de Composer, roulez le fichier et suivez les instructions d'installations.
     Pendant l'installation, vous serez invite a choisir l'executable php.exe  situé dans le dossier dézipé de php.
     NB: Apres l'avoir choisi, ne pas changer le chemin du dossier contenant php.
-    [image1](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/4.jpg),
+    
+     ([image1](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/4.jpg),
     [image2](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/6.jpg),
     [image3](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/7.jpg),
     [image4](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/8.jpg),
-    [image5](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/11.jpg),
-	[Apres installation, ouvrez cmd et rouler: 'composer global require laravel/installer' (pour installer laravel)](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/11.jpg)
+    [image5](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/11.jpg),),
+   
+	[Apres installation, ouvrez cmd et rouler: 'composer global require laravel/installer' (pour installer laravel)](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/16.jpg)
+    
 3. Apres le telechargement de MySQL, roulez le fichier et suivez les instructions d'installations par defaut.
     [Apres installation, ouvrez mysql wokbench et creez la base de données 'projetgarderie'](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/19.jpg).
 
