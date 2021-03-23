@@ -10,6 +10,7 @@ Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai
 1.	Apres le telechargement de php, dézipé et ouvrez le dossier, checher 'php.ini' (fichier de configuration) et ouvrez le avec un editeur de texte.
 	Chercher la ligne 926 ou (;extension=fileinfo) et decommentez la -> (extension=fileinfo).
 	Cherchez la ligne 941 ou (;extension=pdo_mysql) et decommentez la -> (extension=pdo_mysql).
+    https://raw.githubusercontent.com/007nicky/007nicky.github.io/main/Steps/1.jpg
     
 2. Apres le telechargement de Composer, roulez le fichier et suivez les instructions d'installations.
     Pendant l'installation, vous serez invite a choisir l'executable php.exe  situé dans le dossier dézipé de php.
@@ -34,5 +35,4 @@ Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai
 [Se familiariser avec Github](https://m.youtube.com/watch?v=8JJ101D3knE)
 [Se familiariser avec Laravel](https://www.youtube.com/watch?v=MFh0Fd7BsjE&t=3125s)
 
-## Video de mise en place du projet
 
