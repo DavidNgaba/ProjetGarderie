@@ -39,10 +39,10 @@ Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai
 7. Toujours dans cmd (toujours daans le dossier du projet), roulez: 'php artisan migrate' et ensuite
      'php artisan serve' pour rouler le serveur, ouvrez le navigateur et rendez vous a 'http://127.0.0.1:8000'
      
-     [Etapes 4,6 et 7]((https://github.com/007nicky/007nicky.github.io/blob/main/Steps/21.jpg))
 
 ## Liens utiles
 [Se familiariser avec Github](https://m.youtube.com/watch?v=8JJ101D3knE)
+
 [Se familiariser avec Laravel](https://www.youtube.com/watch?v=MFh0Fd7BsjE&t=3125s)
 
 
