@@ -14,7 +14,7 @@ Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai
 2. Apres le telechargement de Composer, roulez le fichier et suivez les instructions d'installations.
     Pendant l'installation, vous serez invite a choisir l'executable php.exe  situé dans le dossier dézipé de php.
     NB: Apres l'avoir choisi, ne pas changer le chemin du dossier contenant php.
-	Apres installation, ouvrez cmd et rouler: composer global require laravel/installer (pour installer laravel)
+	Apres installation, ouvrez cmd et rouler: 'composer global require laravel/installer' (pour installer laravel)
 3. Apres le telechargement de MySQL, roulez le fichier et suivez les instructions d'installations.
     Apres installation, ouvrez mysql wokbench et creez la base de données 'projetgarderie'.
 
