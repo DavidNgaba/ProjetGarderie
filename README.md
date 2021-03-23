@@ -3,7 +3,7 @@
 Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai egalement une video.
 
 - Telecharger le projet zipé ci-haut / Vous pouvez également le clonez. Une fois téléchargé, dézipé le projet ou vous voulez, mais que vous aurez besoin d'y acceder plus tard par la ligne de commande cmd
-- [Telecharger la version zipé de php](https://windows.php.net/download#php-8.0),(Vous pouvez egalement choisir une autre version, j'ai pris celle zipé)
+- Telecharger la version zipé de [php](https://windows.php.net/download#php-8.0),(Vous pouvez egalement choisir une autre version, j'ai pris celle zipé)
 - Telecharger [Composer](https://getcomposer.org/download/), un gestionnaire de dépendances pour PHP
 - Telecharger [Mysql](https://dev.mysql.com/downloads/installer/). pour la base de données
 
