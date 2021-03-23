@@ -1,6 +1,6 @@
 ## Application de gestion d’un service de garde
 
-Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai egalement une video.
+Voici les etapes afin de pouvoir tester le projet sur votre machine, j'incluerai egalement des images.
 
 - [Telecharger le projet zipé ci-haut / Vous pouvez également le clonez. Une fois téléchargé, dézipé le projet ou vous voulez, mais vous aurez besoin d'y acceder plus tard par la ligne de commande cmd](https://raw.githubusercontent.com/007nicky/007nicky.github.io/main/Steps/1.jpg)
 - Telecharger la version zipé de [php](https://windows.php.net/download#php-8.0),(Vous pouvez egalement choisir une autre version, j'ai pris celle [zipé](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/2.jpg))
