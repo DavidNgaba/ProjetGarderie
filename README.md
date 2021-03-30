@@ -1,62 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Application de gestion d’un service de garde
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Voici les etapes si vous desirez tester le projet sur votre machine, des images sont également incluses.
 
-## About Laravel
+- [Telecharger le projet zipé ci-haut / Vous pouvez également le clonez. Une fois téléchargé, dézipé le projet ou vous voulez, mais vous aurez besoin d'y acceder plus tard par la ligne de commande cmd](https://raw.githubusercontent.com/007nicky/007nicky.github.io/main/Steps/1.jpg)
+- Telecharger la version zipé de [php](https://windows.php.net/download#php-8.0),(Vous pouvez egalement choisir une autre version, j'ai pris celle [zipé](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/2.jpg))
+- Telecharger [Composer](https://getcomposer.org/download/), un gestionnaire de dépendances pour PHP. [Image](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/3.jpg)
+- Telecharger [Mysql](https://dev.mysql.com/downloads/installer/). pour la base de données [image1](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/13.jpg),[image2](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/15.jpg)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1.	Apres le telechargement de php, dézipé et ouvrez le dossier, checher 'php.ini' (fichier de configuration) et ouvrez le avec un editeur de texte.
+	Chercher la ligne 926 ou (;extension=fileinfo) et decommentez la -> (extension=fileinfo).
+	Cherchez la ligne 941 ou (;extension=pdo_mysql) et decommentez la -> (extension=pdo_mysql).
+    [Image](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/17.jpg)
+    
+2. Apres le telechargement de Composer, roulez le fichier et suivez les instructions d'installations.
+    Pendant l'installation, vous serez invite a choisir l'executable php.exe  situé dans le dossier dézipé de php.
+    NB: Apres l'avoir choisi, ne pas changer le chemin du dossier contenant php.
+    
+     ([image1](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/4.jpg),
+    [image2](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/6.jpg),
+    [image3](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/7.jpg),
+    [image4](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/8.jpg),
+    [image5](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/11.jpg),),
+   
+	[Apres installation, ouvrez cmd et rouler: 'composer global require laravel/installer' (pour installer laravel)](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/16.jpg)
+    
+3. Apres le telechargement de MySQL, roulez le fichier et suivez les instructions d'installations par defaut.
+    [Apres installation, ouvrez mysql wokbench et creez la base de données 'projetgarderie'](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/19.jpg).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+4. Ouvrez la ligne de commande cmd et aller dans le dossier du Projet dézipé.
+    Tapez 'composer install' et entrer. Patientez pendant que les dependances du projet s'installent
+    
+5. Ouvrez votre projet dans votre editeur de texte ou application(notepad, vscode, atom...), localisez le fichier '.env.example', dupliquez le et renommez le nouveau fichier en '.env'.
+    Ouvrez .env et modifier les identifiants de la base de donnée mysql (ligne 10 a 15) avec vos identifiants créés lors de l'installation de mysql (l'utilisateur devrait toujours etre root a moins que vous n'ayez creez un nouvel utilisateur).
+    [Ajoutez le mot de passe et enregistrez](https://github.com/007nicky/007nicky.github.io/blob/main/Steps/20.jpg).
+    
+6. Allez dans cmd (toujours daans le dossier du projet) et roulez: 'php artisan key:generate'. Une clé sera généré.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+7. Toujours dans cmd (toujours daans le dossier du projet), roulez: 'php artisan migrate' et ensuite
+     'php artisan serve' pour rouler le serveur, ouvrez le navigateur et rendez vous a 'http://127.0.0.1:8000'
+     
 
-## Learning Laravel
+## Liens utiles
+[Se familiariser avec Github](https://m.youtube.com/watch?v=8JJ101D3knE)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+[Se familiariser avec Laravel](https://www.youtube.com/watch?v=MFh0Fd7BsjE&t=3125s)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
