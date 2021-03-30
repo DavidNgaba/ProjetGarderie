@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class ListeEducatricesController extends Controller
 {
+
+    //Cette fonction empeche quiconque n'etant pas admin d'acceder la liste des educatrices
+    public function __construct()
+    {
+        $this->middleware(['admin']);
+    }
     public function index()
     {
         //Extraire la liste des educatrices de la base de données

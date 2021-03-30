@@ -64,6 +64,6 @@ class AddEducatriceController extends Controller
         ]);
 
         //Apres enregistrement, rediriger vers la liste des educatrices
-        return redirect()->route('pageAdmin');
+        return redirect()->route('listeducatrices');
     }
 }
