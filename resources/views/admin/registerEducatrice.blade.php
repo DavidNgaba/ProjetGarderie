@@ -64,7 +64,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="date_embauche" class="form-label">Date de naissance</label>
+            <label for="date_embauche" class="form-label">Date d'embauche</label>
             <input type="date" class="form-control" name="date_embauche" id="date_embauche"
                 placeholder="Date d'embauche de l'educatrice" value="{{ old('lastname') }}" required>
 
@@ -72,6 +72,30 @@
                 Champ Vide ou invalide
             </div>
 
+        </div>
+
+
+        <div class="mb-3">
+            <label for="formation" class="form-label">Formations</label>
+            <textarea class="form-control" name="formation" id="formation"
+                placeholder="Description des formations de l'educatrice" value="{{ old('formation') }}"
+                required></textarea>
+
+            <div class="invalid-feedback">
+                Champ Vide ou invalide
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="specialisation" class="form-label">Specialisations</label>
+            <textarea class="form-control" name="specialisation" id="specialisation"
+                placeholder="Description des specialisations de l'educatrice" value="{{ old('specialisation') }}"
+                required></textarea>
+
+            <div class="invalid-feedback">
+                Champ Vide ou invalide
+            </div>
         </div>
 
 
@@ -95,6 +119,8 @@
             </div>
 
         </div>
+
+
 
         <button type="submit" class="btn btn-primary">Ajouter Educatrice</button>
     </form>

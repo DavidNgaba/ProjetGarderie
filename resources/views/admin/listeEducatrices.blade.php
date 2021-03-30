@@ -8,6 +8,8 @@
         @foreach ($educatrices as $educatrice)
             <br>
             <a href="">{{ $educatrice->name }} {{ $educatrice->lastname }}</a>
+            {{-- <a href="{{ route('formationsEducatrice') }}">Ajouter
+                formation/specialistaion</a> --}}
         @endforeach
     @else
         <p>Pas d'educatrices</p>

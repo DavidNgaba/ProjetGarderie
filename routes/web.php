@@ -5,6 +5,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\AddEducatriceController;
+use App\Http\Controllers\Admin\AddFormationsController;
 use App\Http\Controllers\Admin\RegisterAdminController;
 use App\Http\Controllers\Educatrice\EducatriceController;
 use App\Http\Controllers\Admin\ListeEducatricesController;
