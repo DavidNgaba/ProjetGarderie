@@ -5,6 +5,30 @@
 
     <a class="btn btn-outline-primary mr-2" href="{{ route('ajouterenfant') }}">Ajouter enfant</a>
     <a class="btn btn-outline-primary mr-2" href="{{ route('listenfants') }}">Liste enfants</a>
+    <br>
+
+    @if ($educatrice->count())
+
+        <p>{{ $educatrice->name }} {{ $educatrice->lastname }}</p>
+
+        <p>{{ $educatrice->sexe }}</p>
+
+        <p>{{ $educatrice->date_naissance }}</p>
+
+        <p>Inscrit le: {{ $educatrice->created_at }}</p>
+
+
+        <p>Liste des enfants assignés:
+            @if ($educatrice->enfants->count())
+                @foreach ($educatrice->enfants as $enfant)
+                    {{ $enfant->name }}
+                @endforeach
+            @endif
+            <a class="btn btn-outline-primary mr-2" href="{{ route('modifiereducatrice', $educatrice) }}">Modifier
+                détails</a>
+        @else
+        <p>Inexistant</p>
+    @endif
 
     @yield('educatricecontent')
 

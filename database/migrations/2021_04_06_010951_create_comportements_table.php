@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFkToEnfantsTable extends Migration
+class CreateComportementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddFkToEnfantsTable extends Migration
      */
     public function up()
     {
-        Schema::table('enfants', function (Blueprint $table) {
-            $table->foreignId('educatrice_id')->constrained();
+        Schema::create('comportements', function (Blueprint $table) {
+            $table->id();
+            $table->string('type');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddFkToEnfantsTable extends Migration
      */
     public function down()
     {
-        Schema::table('enfants', function (Blueprint $table) {
-            $table->dropColumn('educatrice_id');
-        });
+        Schema::dropIfExists('comportements');
     }
 }

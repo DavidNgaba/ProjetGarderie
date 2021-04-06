@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EducatriceFormations extends Model
+class Cmedicale extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'educatrice_id',
+        'type',
         'description',
     ];
 
-    //La formation est assigné à une educatrice
-    public function educatrice()
+    public function enfant()
     {
-        return $this->belongsTo(Educatrice::class);
+        return $this->belongsToMany(Enfant::class, 'cmedicales_enfants');
     }
 }
