@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEducatricesTable extends Migration
+class CreateAllergiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateEducatricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('educatrices', function (Blueprint $table) {
+        Schema::create('allergies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lastname');
-            $table->string('password');
-            $table->string('sexe');
-            $table->date('date_naissance');
-            $table->date('date_embauche');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateEducatricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('educatrices');
+        Schema::dropIfExists('allergies');
     }
 }

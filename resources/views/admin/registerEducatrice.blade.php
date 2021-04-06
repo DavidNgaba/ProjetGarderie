@@ -77,9 +77,8 @@
 
         <div class="mb-3">
             <label for="formation" class="form-label">Formations</label>
-            <textarea class="form-control" name="formation" id="formation"
-                placeholder="Description des formations de l'educatrice" value="{{ old('formation') }}"
-                required></textarea>
+            <input type="text" class="form-control" name="formation" id="formation" placeholder="Ajouter une formation"
+                value="{{ old('formation') }}" required>
 
             <div class="invalid-feedback">
                 Champ Vide ou invalide
@@ -89,9 +88,8 @@
 
         <div class="mb-3">
             <label for="specialisation" class="form-label">Specialisations</label>
-            <textarea class="form-control" name="specialisation" id="specialisation"
-                placeholder="Description des specialisations de l'educatrice" value="{{ old('specialisation') }}"
-                required></textarea>
+            <input type="text" class="form-control" name="specialisation" id="specialisation"
+                placeholder="Ajouter une specialisation" value="{{ old('specialisation') }}" required>
 
             <div class="invalid-feedback">
                 Champ Vide ou invalide

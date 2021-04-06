@@ -42,8 +42,21 @@ class Educatrice extends Authenticatable
         'remember_token',
     ];
 
+    //Une educatrice peut avoir plusieurs enfants assignés
     public function enfants()
     {
         return $this->hasMany(Enfant::class);
+    }
+
+    //Une educatrice peut avoir plusieurs formations
+    public function formations()
+    {
+        return $this->hasMany(EducatriceFormations::class);
+    }
+
+    //Une educatrice peut avoir plusieurs specifications 
+    public function specialisations()
+    {
+        return $this->hasMany(EducatriceSpecialisations::class);
     }
 }

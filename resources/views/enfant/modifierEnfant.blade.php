@@ -18,28 +18,14 @@
         <a class="navbar-brand" href="{{ route('acceuil') }}">Garderie</a>
 
 
-        {{-- <br class="mb-4">
-    <strong> Liste des vaccins:</strong>
-    @if ($vaccins->count())
-        @foreach ($vaccins as $vaccin)
-            <br>
-            <a href="">{{ $vaccin->description }}</a>
-
-            <span>{{ $vaccin->enfant->count() }}</span>
-
-        @endforeach
-    @else
-        <p>Pas de vaccin</p>
-    @endif --}}
-
 
         {{-- Formulaire d'enregistrement, juste un prototype --}}
-        <form class="" action="{{ route('ajouterenfant') }}" method="post" novalidate>
+        <form class="" action="{{ route('modifierenfant', $enfant) }}" method="post" novalidate>
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Prenom</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Prenom de l'enfant"
-                    value="{{ old('name') }}" required>
+                    value="{{ $enfant->name }}" required>
 
                 <div class="invalid-feedback">
                     Champ Vide ou invalide
@@ -50,14 +36,13 @@
             <div class="mb-3">
                 <label for="lastname" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Nom de l'enfant"
-                    value="{{ old('lastname') }}" required>
+                    value="{{ $enfant->lastname }}" required>
 
                 <div class="invalid-feedback">
                     Champ Vide ou invalide
                 </div>
 
             </div>
-
 
             <div class="mb-1">
                 <input class="form-check-input" type="radio" name="sexe" id="masculin" value="homme">
@@ -66,25 +51,43 @@
                 </label>
             </div>
             <div class="mb-3">
-                <input class="form-check-input" type="radio" name="sexe" id="feminin" value="femme" checked>
+                <input class="form-check-input" type="radio" name="sexe" id="feminin" value="femme">
                 <label class="form-check-label" for="feminin">
                     Feminin
                 </label>
             </div>
 
+
             <div class="mb-3">
                 <label for="date_naissance" class="form-label">Date de naissance</label>
                 <input type="date" class="form-control" name="date_naissance" id="date_naissance"
-                    placeholder="Date de naissance de l'enfant" value="{{ old('lastname') }}" required>
+                    placeholder="Date de naissance de l'enfant" value="{{ $enfant->date_naissance }}" required>
 
                 <div class="invalid-feedback">
                     Champ Vide ou invalide
                 </div>
             </div>
 
+
+            {{-- vaccin --}}
             <div class="mb-3">
 
-                <label for="vaccins" class="form-label"><strong> Les vaccins</strong></label><br>
+                <label for="vaccins" class="form-label"><strong> Liste des vaccins actuels de
+                        l'enfant</strong></label><br>
+
+                @if ($enfant->vaccin->count())
+                    @foreach ($enfant->vaccin as $vaccin)
+
+                        <p>{{ $vaccin->description }} </p>
+
+                    @endforeach
+                @endif
+
+            </div>
+
+            <div class="mb-3">
+
+                <label for="vaccins" class="form-label"><strong> Ajouter un autre vaccin</strong></label><br>
 
                 @if ($vaccins->count())
                     @foreach ($vaccins as $vaccin)
@@ -96,7 +99,7 @@
 
                     <div class="mb-3">
                         <input type="text" class="form-control" name="vaccin" id="vaccin"
-                            placeholder="Ajouter un vaccin" value="{{ old('vaccin') }}" required>
+                            placeholder="Ajouter un vaccin non listé" value="{{ old('vaccin') }}" required>
 
                         <div class="invalid-feedback">
                             Champ Vide ou invalide
@@ -104,7 +107,8 @@
                     </div>
                 @else
                     <div class="mb-3">
-                        <label for="vaccin" class="form-label">Ajouter un vaccin</label>
+                        <label for="vaccin" class="form-label"><strong>Ajouter un vaccin</strong></label>
+
                         <input type="text" class="form-control" name="vaccin" id="vaccin"
                             placeholder="Description du vaccin" value="{{ old('vaccin') }}" required>
 
@@ -116,21 +120,37 @@
 
             </div>
 
+
+            {{-- allergie --}}
             <div class="mb-3">
 
-                <label for="allergies" class="form-label"><strong> Les allergies</strong></label><br>
+                <label for="vaccins" class="form-label"><strong> Liste des allergies actuelles de
+                        l'enfant</strong></label><br>
+
+                @if ($enfant->allergie->count())
+                    @foreach ($enfant->allergie as $allergie)
+
+                        <p>{{ $allergie->description }} </p>
+
+                    @endforeach
+                @endif
+
+            </div>
+            <div class="mb-3">
+
+                <label for="vaccins" class="form-label"><strong> Ajouter une allergie</strong></label><br>
 
                 @if ($allergies->count())
                     @foreach ($allergies as $allergie)
 
-                        <label><input type="checkbox" name="allergies[]" value="{{ $allergie->description }}">
+                        <label><input type="checkbox" name="vaccins[]" value="{{ $allergie->description }}">
                             {{ $allergie->description }}</label> <br>
 
                     @endforeach
 
                     <div class="mb-3">
                         <input type="text" class="form-control" name="allergie" id="allergie"
-                            placeholder="Ajouter une allergie" value="{{ old('allergie') }}" required>
+                            placeholder="Ajouter un vaccin non listé" value="{{ old('allergie') }}" required>
 
                         <div class="invalid-feedback">
                             Champ Vide ou invalide
@@ -138,9 +158,10 @@
                     </div>
                 @else
                     <div class="mb-3">
-                        <label for="vaccin" class="form-label">Ajouter une allergie</label>
+                        <label for="vaccin" class="form-label"><strong>Ajouter un vaccin</strong></label>
+
                         <input type="text" class="form-control" name="allergie" id="allergie"
-                            placeholder="Description de l'allergie" value="{{ old('allergie') }}" required>
+                            placeholder="Description du vaccin" value="{{ old('allergie') }}" required>
 
                         <div class="invalid-feedback">
                             Champ Vide ou invalide
@@ -150,10 +171,20 @@
 
             </div>
 
+            {{-- problemes comportementaux --}}
             <div class="mb-3">
-
-                <label for="comportement" class="form-label"><strong> Les problemes comportementaux de
+                <label for="vaccins" class="form-label"><strong> Liste des problemes comportementaux de
                         l'enfant</strong></label><br>
+
+                @if ($enfant->comportement->count())
+                    @foreach ($enfant->comportement as $comportement)
+
+                        <p>{{ $comportement->type }}: {{ $comportement->description }} </p>
+
+                    @endforeach
+                @endif
+            </div>
+            <div class="mb-3">
 
                 <div class="mb-3">
                     <input type="text" class="form-control" name="comportement" id="comportement"
@@ -176,10 +207,18 @@
 
             </div>
 
+            {{-- contraintes medicales --}}
             <div class="mb-3">
-
-                <label for="cmedicale" class="form-label"><strong> Les contraintes medicales de
+                <label for="vaccins" class="form-label"><strong> Liste des contraintes medicales de
                         l'enfant</strong></label><br>
+
+                @if ($enfant->contrainteMedicale->count())
+                    @foreach ($enfant->contrainteMedicale as $cmedicale)
+                        <p>{{ $cmedicale->type }}: {{ $cmedicale->description }} </p>
+                    @endforeach
+                @endif
+            </div>
+            <div class="mb-3">
 
                 <div class="mb-3">
                     <input type="text" class="form-control" name="cmedicale" id="cmedicale"
@@ -204,8 +243,8 @@
 
             <div class="mb-3">
 
-                <label for="educatrices" class="form-label"><strong>Assigner une educatrice</strong></label><br>
-
+                <label for="educatrices" class="form-label"><strong>Changer educatrice</strong></label><br>
+                <p>Educatrice actuelle: {{ $enfant->educatrice->name }} {{ $enfant->educatrice->lastname }}</P>
                 @if ($educatrices->count())
 
                     <select name="educatrices" id="educatrices">
@@ -227,57 +266,8 @@
                 </div>
             </div>
 
-            <p>Coordonnées Tuteur Principale</p>
 
-            <div class="mb-3">
-                <input type="text" class="form-control" name="tuteurname" id="tuteurname" placeholder="Nom"
-                    value="{{ old('tuteurname') }}" required>
-                <input type="text" class="form-control" name="tuteurlastname" id="tuteurlastname" placeholder="Prenom"
-                    value="{{ old('tuteurlastname') }}" required>
-                <input type="text" class="form-control" name="tuteuremail" id="tuteuremail" placeholder="Email"
-                    value="{{ old('tuteuremail') }}" required>
-                <input type="text" class="form-control" name="tuteurphone" id="tuteurphone" placeholder="Telephone"
-                    value="{{ old('tuteurphone') }}" required>
-
-                <div class="mb-1">
-                    <input class="form-check-input" type="radio" name="tuteur" id="principale" value="principale"
-                        checked>
-                    <label class="form-check-label" for="principale">
-                        Tuteur principale
-                    </label>
-                </div>
-                <div class="mb-3">
-                    <input class="form-check-input" type="radio" name="tuteur" id="secondaire" value="secondaire"
-                        disabled>
-                    <label class="form-check-label" for="secondaire">
-                        Tuteur secondaire
-                    </label>
-                </div>
-
-                <div class="invalid-feedback">
-                    Champ Vide ou invalide
-                </div>
-            </div>
-
-            <p>Coordonnées Récuperateur</p>
-            <div class="mb-3">
-                <input type="text" class="form-control" name="recuperateurname" id="recuperateurname" placeholder="Nom"
-                    value="{{ old('recuperateurname') }}" required>
-                <input type="text" class="form-control" name="recuperateurlastname" id="recuperateurlastname"
-                    placeholder="Prenom" value="{{ old('recuperateurlastname') }}" required>
-                <input type="text" class="form-control" name="recuperateuremail" id="recuperateuremail"
-                    placeholder="Email" value="{{ old('recuperateuremail') }}" required>
-                <input type="text" class="form-control" name="recuperateurphone" id="recuperateurphone"
-                    placeholder="Telephone" value="{{ old('recuperateurphone') }}" required>
-
-
-                <div class="invalid-feedback">
-                    Champ Vide ou invalide
-                </div>
-            </div>
-
-
-            <button type="submit" class="btn btn-primary">Ajouter Enfant</button>
+            <button type="submit" class="btn btn-primary">Modifier</button>
         </form>
 
 

@@ -3,26 +3,22 @@
 namespace App\Http\Controllers\Enfant;
 
 use App\Models\Enfant;
-use App\Models\Tuteur;
 use App\Models\Vaccin;
 use App\Models\Allergie;
+use App\Models\Cmedicale;
 use App\Models\Educatrice;
 use App\Models\Comportement;
-use App\Models\Recuperateur;
 use Illuminate\Http\Request;
-use App\Http\Middleware\admin;
 use App\Models\VaccinsEnfants;
 use App\Models\AllergiesEnfants;
-use App\Http\Controllers\Controller;
-use App\Models\Cmedicale;
 use App\Models\CmedicalesEnfants;
+use App\Http\Controllers\Controller;
 use App\Models\ComportementsEnfants;
 
-class AjoutEnfantController extends Controller
+class ModifierEnfantController extends Controller
 {
-
     //fonction d'affichage de registration page
-    public function index()
+    public function index(Enfant $enfant)
     {
 
         //Extraire la liste des vaccins de la base de données
@@ -34,8 +30,10 @@ class AjoutEnfantController extends Controller
         //Extraire la liste des educatrices de la base de données
         $allEducatrices = Educatrice::get();
 
+
         //Retourner la liste a la vue correspondante
-        return view('enfant.ajoutEnfant', [
+        return view('enfant.modifierEnfant', [
+            'enfant' => $enfant,
             'vaccins' => $allVaccins,
             'allergies' => $allAllergies,
             'educatrices' => $allEducatrices,
@@ -43,7 +41,7 @@ class AjoutEnfantController extends Controller
     }
 
     //Apres l'entrée des identifiants, enregistrer enfant dans la base de donnee
-    public function check(Request $request)
+    public function update(Request $request, Enfant $enfant)
     {
 
         //Valider les champs
@@ -52,49 +50,21 @@ class AjoutEnfantController extends Controller
             'lastname' => 'required|max:255',
             'sexe' => 'required|in:homme,femme',
             'date_naissance' => 'required|date_format:Y-m-d',
-
-
-            'tuteurname' => 'required|max:255',
-            'tuteurlastname' => 'required|max:255',
-            'tuteuremail' => 'required|email|max:255',
-            'tuteurphone' => 'required|digits:10',
-            'tuteur' => 'required|in:principale,secondaire',
-
-
-            'recuperateurname' => 'required|max:255',
-            'recuperateurlastname' => 'required|max:255',
-            'recuperateuremail' => 'required|email|max:255',
-            'recuperateurphone' => 'required|digits:10',
-
         ]);
 
         //Creer enfant dans la base de donnees
-        $eid = Enfant::create([
-            'name' => $request->name,
-            'lastname' => $request->lastname,
-            'sexe' => $request->sexe,
-            'date_naissance' => $request->date_naissance,
-            'educatrice_id' => $request->educatrices,
-        ])->id;
+        $eid = Enfant::updateOrCreate(
 
-        //Creer tuteur dans la base de donnees
-        Tuteur::create([
-            'name' => $request->tuteurname,
-            'lastname' => $request->tuteurlastname,
-            'email' => $request->tuteuremail,
-            'phonenumber' => $request->tuteurphone,
-            'type' => $request->tuteur,
-            'enfant_id' => $eid,
-        ]);
+            ['id' => $enfant->id],
+            [
+                'name' => $request->name,
+                'lastname' => $request->lastname,
+                'sexe' => $request->sexe,
+                'date_naissance' => $request->date_naissance,
+                'educatrice_id' => $request->educatrices,
+            ]
+        )->id;
 
-        //Creer Recuperateur dans la base de donnees
-        Recuperateur::create([
-            'name' => $request->recuperateurname,
-            'lastname' => $request->recuperateurlastname,
-            'email' => $request->recuperateuremail,
-            'phonenumber' => $request->recuperateurphone,
-            'enfant_id' => $eid,
-        ]);
 
         //Ajouter les vaccins de l'enfant a partir des vaccins deja existants dans la base de données
         if (!empty($request->input('vaccins'))) {
@@ -102,56 +72,46 @@ class AjoutEnfantController extends Controller
             $vaccins = $request->input('vaccins');
 
             foreach ($vaccins as $vaccin) {
-                $vid = Vaccin::firstOrCreate([
-                    'description' => $vaccin,
-                ])->id;
+                $vid = Vaccin::updateOrCreate(
+                    [
+                        'description' => $vaccin,
+                    ]
+                )->id;
             }
 
-            VaccinsEnfants::create([
+            VaccinsEnfants::updateOrCreate([
                 'enfant_id' => $eid,
                 'vaccin_id' => $vid,
             ]);
         }
+
         //Enregistrer un vaccin de l'enfant inexistant dans la base de donnée et lui assignée
         if (!empty($request->input('vaccin'))) {
-            $vid = Vaccin::firstOrCreate([
-                'description' => $request->vaccin,
-            ])->id;
+            $vid = Vaccin::updateOrCreate(
+                [
+                    'description' => $request->vaccin,
+                ]
+            )->id;
 
-            VaccinsEnfants::create([
+            VaccinsEnfants::updateOrCreate([
                 'enfant_id' => $eid,
                 'vaccin_id' => $vid,
             ]);
         }
 
-        //Ajouter les allergies de l'enfant a partir des allergies deja existants dans la base de données
-        if (!empty($request->input('allergies'))) {
-
-            $allergies = $request->input('allergies');
-
-            foreach ($allergies as $allergie) {
-                $aid = Allergie::firstOrCreate([
-                    'description' => $allergie,
-                ])->id;
-            }
-
-            AllergiesEnfants::create([
-                'enfant_id' => $eid,
-                'allergie_id' => $aid,
-            ]);
-        }
-        //Enregistrer un vaccin de l'enfant inexistant dans la base de donnée et lui assignée
+        //Enregistrer une allergie de l'enfant inexistant dans la base de donnée et lui assignée
         if (!empty($request->input('allergie'))) {
-            $aid = Allergie::firstOrCreate([
-                'description' => $request->allergie,
-            ])->id;
+            $aid = Allergie::updateOrCreate(
+                [
+                    'description' => $request->allergie,
+                ]
+            )->id;
 
-            AllergiesEnfants::create([
+            AllergiesEnfants::updateOrCreate([
                 'enfant_id' => $eid,
                 'allergie_id' => $aid,
             ]);
         }
-
 
         //Enregistrer un comportement et sa description dans la base de donnée 
         if (!empty($request->input('comportement'))) {
@@ -161,12 +121,12 @@ class AjoutEnfantController extends Controller
                 'descriptioncomportement' => 'required|max:1000',
             ]);
 
-            $cid = Comportement::firstOrCreate([
+            $cid = Comportement::updateOrCreate([
                 'type' => $request->comportement,
                 'description' => $request->descriptioncomportement,
             ])->id;
 
-            ComportementsEnfants::create([
+            ComportementsEnfants::updateOrCreate([
                 'enfant_id' => $eid,
                 'comportement_id' => $cid,
             ]);
@@ -180,18 +140,19 @@ class AjoutEnfantController extends Controller
                 'descriptioncmedicale' => 'required|max:1000',
             ]);
 
-            $cmid = Cmedicale::firstOrCreate([
+            $cmid = Cmedicale::updateOrCreate([
                 'type' => $request->cmedicale,
                 'description' => $request->descriptioncmedicale,
             ])->id;
 
-            CmedicalesEnfants::create([
+            CmedicalesEnfants::updateOrCreate([
                 'enfant_id' => $eid,
                 'cmedicale_id' => $cmid,
             ]);
         }
 
+
         //Apres enregistrement, rediriger vers la liste des enfants
-        return redirect()->route('listenfants');
+        return redirect()->route('listenfants')->with('success', 'Enfant bien modifié');
     }
 }

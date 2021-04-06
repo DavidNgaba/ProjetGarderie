@@ -35,6 +35,10 @@
                     @if (Auth::guard('admin')->check())
                         <div>
                             <p>{{ Auth::guard('admin')->user()->username }}</p>
+
+                            <a class="btn btn-outline-primary mr-2" href="{{ route('pageAdmin') }}">Espace
+                                admin</a>
+
                             {{-- On utilise un formulaire pour des raisons de securite, mais un simple bouton marche aussi --}}
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
@@ -45,6 +49,10 @@
                     @elseif(Auth::guard('educatrice')->check())
                         <div>
                             <p>{{ Auth::guard('educatrice')->user()->name }}</p>
+
+                            <a class="btn btn-outline-primary mr-2" href="{{ route('pageEducatrice') }}">Espace
+                                educatrice</a>
+
                             {{-- On utilise un formulaire pour des raisons de securite, mais un simple bouton marche aussi --}}
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf

@@ -13,4 +13,10 @@ class EducatriceSpecialisations extends Model
         'educatrice_id',
         'description',
     ];
+
+    //La specification est assigné à une educatrice
+    public function educatrice()
+    {
+        return $this->belongsTo(Educatrice::class);
+    }
 }
