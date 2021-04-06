@@ -4,10 +4,16 @@ namespace App\Http\Controllers\Enfant;
 
 use App\Models\Enfant;
 use App\Models\Vaccin;
+use App\Models\Allergie;
+use App\Models\Cmedicale;
 use App\Models\Educatrice;
+use App\Models\Comportement;
 use Illuminate\Http\Request;
 use App\Models\VaccinsEnfants;
+use App\Models\AllergiesEnfants;
+use App\Models\CmedicalesEnfants;
 use App\Http\Controllers\Controller;
+use App\Models\ComportementsEnfants;
 
 class ModifierEnfantController extends Controller
 {
@@ -18,13 +24,18 @@ class ModifierEnfantController extends Controller
         //Extraire la liste des vaccins de la base de données
         $allVaccins = Vaccin::get();
 
+        //Extraire la liste des allergies de la base de données
+        $allAllergies = Allergie::get();
+
         //Extraire la liste des educatrices de la base de données
         $allEducatrices = Educatrice::get();
+
 
         //Retourner la liste a la vue correspondante
         return view('enfant.modifierEnfant', [
             'enfant' => $enfant,
             'vaccins' => $allVaccins,
+            'allergies' => $allAllergies,
             'educatrices' => $allEducatrices,
         ]);
     }
@@ -85,6 +96,58 @@ class ModifierEnfantController extends Controller
             VaccinsEnfants::updateOrCreate([
                 'enfant_id' => $eid,
                 'vaccin_id' => $vid,
+            ]);
+        }
+
+        //Enregistrer une allergie de l'enfant inexistant dans la base de donnée et lui assignée
+        if (!empty($request->input('allergie'))) {
+            $aid = Allergie::updateOrCreate(
+                [
+                    'description' => $request->allergie,
+                ]
+            )->id;
+
+            AllergiesEnfants::updateOrCreate([
+                'enfant_id' => $eid,
+                'allergie_id' => $aid,
+            ]);
+        }
+
+        //Enregistrer un comportement et sa description dans la base de donnée 
+        if (!empty($request->input('comportement'))) {
+
+            //Obliger une description si un probleme existe
+            $this->validate($request, [
+                'descriptioncomportement' => 'required|max:1000',
+            ]);
+
+            $cid = Comportement::updateOrCreate([
+                'type' => $request->comportement,
+                'description' => $request->descriptioncomportement,
+            ])->id;
+
+            ComportementsEnfants::updateOrCreate([
+                'enfant_id' => $eid,
+                'comportement_id' => $cid,
+            ]);
+        }
+
+        //Enregistrer une  contrainte medicale et sa description dans la base de donnée 
+        if (!empty($request->input('cmedicale'))) {
+
+            //Obliger une description si une contrainte existe
+            $this->validate($request, [
+                'descriptioncmedicale' => 'required|max:1000',
+            ]);
+
+            $cmid = Cmedicale::updateOrCreate([
+                'type' => $request->cmedicale,
+                'description' => $request->descriptioncmedicale,
+            ])->id;
+
+            CmedicalesEnfants::updateOrCreate([
+                'enfant_id' => $eid,
+                'cmedicale_id' => $cmid,
             ]);
         }
 

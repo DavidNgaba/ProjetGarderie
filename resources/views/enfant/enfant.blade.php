@@ -71,7 +71,17 @@
             @endforeach
         </p>
 
+        <p>Historique d'incidence de l'enfant:
+            @foreach ($enfant->incidents as $incident)
+                {{ $incident->date_incident }} - {{ $incident->heure_incident }}
+                {{ $incident->type }}:{{ $incident->description }}
+            @endforeach
+        </p>
+
         <a class="btn btn-outline-primary mr-2" href="{{ route('modifierenfant', $enfant) }}">Modifier détails</a>
+        <a class="btn btn-outline-primary mr-2" href="{{ route('modifierincidence', $enfant) }}">Ajouter une
+            incidence</a>
+
     @else
         <p>Pas d'enfants</p>
     @endif

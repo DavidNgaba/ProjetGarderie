@@ -13,6 +13,7 @@ use App\Http\Controllers\Enfant\ListeEnfantsController;
 use App\Http\Controllers\Educatrice\EducatriceController;
 use App\Http\Controllers\Enfant\ModifierEnfantController;
 use App\Http\Controllers\Admin\ListeEducatricesController;
+use App\Http\Controllers\Enfant\AjouterIncidenceController;
 use App\Http\Controllers\Educatrice\LoginEducatriceController;
 use App\Http\Controllers\Enfant\ModifierDetailsEnfantController;
 use App\Http\Controllers\Educatrice\ModifierEducatriceController;
@@ -60,6 +61,10 @@ Route::post('/ajouterEnfant', [AjoutEnfantController::class, 'check']);
 //Route vers la vue de la page de modification des details de l'enfant
 Route::get('/modifierEnfant/{enfant?}', [ModifierEnfantController::class, 'index'])->name('modifierenfant');
 Route::post('/modifierEnfant/{enfant?}', [ModifierEnfantController::class, 'update']);
+
+//Route vers la vue de la page de modification des incidences de l'enfant
+Route::get('/modifierIncident/{enfant?}', [AjouterIncidenceController::class, 'index'])->name('modifierincidence');
+Route::post('/modifierIncident/{enfant?}', [AjouterIncidenceController::class, 'update']);
 
 //Route vers la vue de la page de modification des details des tuteurs/recuperateurs l'enfant
 Route::get('/modifierDetailsTuteur/{tuteur?}/enfant/{enfant?}', [ModifierDetailsEnfantController::class, 'tuteur'])->name('modifierDetailsTuteur');

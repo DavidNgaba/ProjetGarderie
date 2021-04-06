@@ -16,7 +16,7 @@ class CreateCmedicalesEnfantsTable extends Migration
         Schema::create('cmedicales_enfants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('enfant_id')->constrained()->onDelete('cascade');
-            $table->foreignId('cmedicale_id')->constrained();
+            $table->foreignId('cmedicale_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateComportementsTable extends Migration
         Schema::create('comportements', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

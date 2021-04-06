@@ -19,8 +19,8 @@ class CreateEducatricesTable extends Migration
             $table->string('lastname');
             $table->string('password');
             $table->string('sexe');
-            $table->dateTime('date_naissance');
-            $table->dateTime('date_embauche');
+            $table->date('date_naissance');
+            $table->date('date_embauche');
             $table->timestamps();
         });
     }

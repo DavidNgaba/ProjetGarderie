@@ -57,14 +57,14 @@ class AjoutEnfantController extends Controller
             'tuteurname' => 'required|max:255',
             'tuteurlastname' => 'required|max:255',
             'tuteuremail' => 'required|email|max:255',
-            'tuteurphone' => 'required|digits:5',
+            'tuteurphone' => 'required|digits:10',
             'tuteur' => 'required|in:principale,secondaire',
 
 
             'recuperateurname' => 'required|max:255',
             'recuperateurlastname' => 'required|max:255',
             'recuperateuremail' => 'required|email|max:255',
-            'recuperateurphone' => 'required|digits:5',
+            'recuperateurphone' => 'required|digits:10',
 
         ]);
 

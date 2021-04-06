@@ -6,6 +6,7 @@ use App\Models\Tuteur;
 use App\Models\Vaccin;
 use App\Models\Allergie;
 use App\Models\Cmedicale;
+use App\Models\Incidence;
 use App\Models\Educatrice;
 use App\Models\Comportement;
 use App\Models\Recuperateur;
@@ -64,5 +65,11 @@ class Enfant extends Model
     public function recuperateurs()
     {
         return $this->hasMany(Recuperateur::class);
+    }
+
+    //L'enfant peut avoir plus d'un Recuperateur (relation one to many)
+    public function incidents()
+    {
+        return $this->hasMany(Incidence::class);
     }
 }

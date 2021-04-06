@@ -16,7 +16,7 @@ class CreateCmedicalesTable extends Migration
         Schema::create('cmedicales', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

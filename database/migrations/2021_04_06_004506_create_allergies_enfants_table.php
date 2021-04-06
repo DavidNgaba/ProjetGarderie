@@ -16,7 +16,7 @@ class CreateAllergiesEnfantsTable extends Migration
         Schema::create('allergies_enfants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('enfant_id')->constrained()->onDelete('cascade');
-            $table->foreignId('allergie_id')->constrained();
+            $table->foreignId('allergie_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

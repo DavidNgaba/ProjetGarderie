@@ -68,6 +68,8 @@
                 </div>
             </div>
 
+
+            {{-- vaccin --}}
             <div class="mb-3">
 
                 <label for="vaccins" class="form-label"><strong> Liste des vaccins actuels de
@@ -115,6 +117,127 @@
                         </div>
                     </div>
                 @endif
+
+            </div>
+
+
+            {{-- allergie --}}
+            <div class="mb-3">
+
+                <label for="vaccins" class="form-label"><strong> Liste des allergies actuelles de
+                        l'enfant</strong></label><br>
+
+                @if ($enfant->allergie->count())
+                    @foreach ($enfant->allergie as $allergie)
+
+                        <p>{{ $allergie->description }} </p>
+
+                    @endforeach
+                @endif
+
+            </div>
+            <div class="mb-3">
+
+                <label for="vaccins" class="form-label"><strong> Ajouter une allergie</strong></label><br>
+
+                @if ($allergies->count())
+                    @foreach ($allergies as $allergie)
+
+                        <label><input type="checkbox" name="vaccins[]" value="{{ $allergie->description }}">
+                            {{ $allergie->description }}</label> <br>
+
+                    @endforeach
+
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="allergie" id="allergie"
+                            placeholder="Ajouter un vaccin non listé" value="{{ old('allergie') }}" required>
+
+                        <div class="invalid-feedback">
+                            Champ Vide ou invalide
+                        </div>
+                    </div>
+                @else
+                    <div class="mb-3">
+                        <label for="vaccin" class="form-label"><strong>Ajouter un vaccin</strong></label>
+
+                        <input type="text" class="form-control" name="allergie" id="allergie"
+                            placeholder="Description du vaccin" value="{{ old('allergie') }}" required>
+
+                        <div class="invalid-feedback">
+                            Champ Vide ou invalide
+                        </div>
+                    </div>
+                @endif
+
+            </div>
+
+            {{-- problemes comportementaux --}}
+            <div class="mb-3">
+                <label for="vaccins" class="form-label"><strong> Liste des problemes comportementaux de
+                        l'enfant</strong></label><br>
+
+                @if ($enfant->comportement->count())
+                    @foreach ($enfant->comportement as $comportement)
+
+                        <p>{{ $comportement->type }}: {{ $comportement->description }} </p>
+
+                    @endforeach
+                @endif
+            </div>
+            <div class="mb-3">
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="comportement" id="comportement"
+                        placeholder="Ajouter un type de probleme" value="{{ old('comportement') }}" required>
+
+                    <div class="invalid-feedback">
+                        Champ Vide ou invalide
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" name="descriptioncomportement" id="descriptioncomportement"
+                        placeholder="Description du probleme"
+                        required>{{ old('descriptioncomportement') }}</textarea>
+
+                    <div class="invalid-feedback">
+                        Champ Vide ou invalide
+                    </div>
+                </div>
+
+            </div>
+
+            {{-- contraintes medicales --}}
+            <div class="mb-3">
+                <label for="vaccins" class="form-label"><strong> Liste des contraintes medicales de
+                        l'enfant</strong></label><br>
+
+                @if ($enfant->contrainteMedicale->count())
+                    @foreach ($enfant->contrainteMedicale as $cmedicale)
+                        <p>{{ $cmedicale->type }}: {{ $cmedicale->description }} </p>
+                    @endforeach
+                @endif
+            </div>
+            <div class="mb-3">
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="cmedicale" id="cmedicale"
+                        placeholder="Ajouter une contrainte medicale" value="{{ old('cmedicale') }}" required>
+
+                    <div class="invalid-feedback">
+                        Champ Vide ou invalide
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" name="descriptioncmedicale" id="descriptioncmedicale"
+                        placeholder="Description de la contrainte"
+                        required>{{ old('descriptioncmedicale') }}</textarea>
+
+                    <div class="invalid-feedback">
+                        Champ Vide ou invalide
+                    </div>
+                </div>
 
             </div>
 

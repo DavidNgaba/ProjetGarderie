@@ -19,7 +19,7 @@ class CreateTuteursTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->integer('phonenumber');
+            $table->bigInteger('phonenumber');
             $table->string('type');
             $table->timestamps();
         });

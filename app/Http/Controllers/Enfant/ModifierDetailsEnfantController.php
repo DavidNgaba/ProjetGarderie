@@ -38,7 +38,7 @@ class ModifierDetailsEnfantController extends Controller
             'name' => 'required|max:255',
             'lastname' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|digits:5',
+            'phone' => 'required|digits:10',
         ]);
 
         //Creer tuteur dans la base de donnees
@@ -66,7 +66,7 @@ class ModifierDetailsEnfantController extends Controller
             'Tname' => 'required|max:255',
             'Tlastname' => 'required|max:255',
             'Temail' => 'required|email|max:255',
-            'Tphone' => 'required|digits:5',
+            'Tphone' => 'required|digits:10',
             'Ttuteur' => 'required|in:principale,secondaire',
         ]);
         //Creer tuteur dans la base de donnees
@@ -106,7 +106,7 @@ class ModifierDetailsEnfantController extends Controller
             'name' => 'required|max:255',
             'lastname' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|digits:5',
+            'phone' => 'required|digits:10',
         ]);
         //Creer tuteur dans la base de donnees
         Recuperateur::create([
